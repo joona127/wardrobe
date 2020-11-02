@@ -30,7 +30,7 @@ public class Owner {
 	}
 	
 	public Owner (String name) {
-		super();
+		
 		this.name = name;
 	}
 

@@ -56,7 +56,7 @@ public class ClothingController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Clothing clothing) {
 		clothingrepository.save(clothing);
-		return "redirect:booklist";
+		return "redirect:../clothes";
 	}
 	
 }
