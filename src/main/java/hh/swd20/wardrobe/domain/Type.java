@@ -12,10 +12,19 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+
+
+@Entity
 public class Type {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long typeid;
 	private String name;
+	
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
+	private List<Clothing> clothes;
 	
 	public Type () {
 		
@@ -40,6 +49,15 @@ public class Type {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+
+	public List<Clothing> getClothes() {
+		return clothes;
+	}
+
+	public void setClothes(List<Clothing> clothes) {
+		this.clothes = clothes;
 	}
 
 	@Override

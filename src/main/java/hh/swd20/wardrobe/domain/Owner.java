@@ -13,10 +13,17 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
+@Entity
 public class Owner {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long ownerid;
 	private String name;
+	
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+	private List<Clothing> clothes;
 	
 	public Owner () {
 		
@@ -41,6 +48,15 @@ public class Owner {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+
+	public List<Clothing> getClothes() {
+		return clothes;
+	}
+
+	public void setClothes(List<Clothing> clothes) {
+		this.clothes = clothes;
 	}
 
 	@Override
