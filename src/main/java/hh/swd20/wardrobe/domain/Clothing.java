@@ -23,33 +23,28 @@ public class Clothing {
 	
 	@ManyToOne
 	@JsonManagedReference
-	@JoinColumn(name = "typeid")
-	private Type type;
+	@JoinColumn(name = "ownerid")
+	private Owner owner;
 	
 	@ManyToOne
 	@JsonManagedReference
-	@JoinColumn(name = "ownerid")
-	private Owner owner;
+	@JoinColumn(name = "typeid")
+	private Type type;
+	
+	
 	
 	public Clothing () {
 		
 	}
 	
-	public Clothing (String description, int year, double price) {
-		super();
-		this.description = description;
-		this.year = year;
-		this.price = price;
-		
-	}
 	
-	public Clothing (String description, int year, double price, Type type, Owner owner) {
+	public Clothing (String description, int year, double price, Owner owner, Type type) {
 		super();
 		this.description = description;
 		this.year = year;
 		this.price = price;
-		this.type = type;
 		this.owner = owner;
+		this.type = type;
 	}
 
 	public Long getId() {
@@ -83,29 +78,41 @@ public class Clothing {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
-
-	public Type getType() {
-		return type;
-	}
-
-	public void setType(Type type) {
-		this.type = type;
-	}
-	
 
 	public Owner getOwner() {
 		return owner;
 	}
 
+
 	public void setOwner(Owner owner) {
 		this.owner = owner;
 	}
 
+	public Type getType() {
+		return type;
+	}
+
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+
+
+
 	@Override
 	public String toString() {
-		return "Clothing [id=" + id + ", description=" + description + ", year=" + year + ", price=" + price + "]";
+		if (this.owner != null)
+		return "Clothing [id=" + id + ", description=" + description + ", year=" + year + ", price=" + price + ", + owner=" + this.getOwner() + " type="
+				+ this.getType() + "]";
+		
+		else 
+			return "Clothing [id=" + id + ", description=" + description + ", year=" + year + ", price=" + price + "]";
 	}
+	
+
+
+	
 	
 	
 	

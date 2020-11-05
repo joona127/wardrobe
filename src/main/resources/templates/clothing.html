@@ -1,22 +1,40 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Book List</title>
+<title>Wardrobe</title>
+<link th:href="@{/styles/home.css}" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
-    <div class="col-md-3" style="margin-left:650px">
-	<h1>Clothes</h1>
+
+
+
+
+  <!--    <div class="col-md-3" style="margin-left:650px"> -->
+    
+   
+ 
+    
+   
 	
-	</div>
+	
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Wardrobe Application</h1>
+    <p class="lead">What's inside your wardrobe?</p>
+  </div>
+</div>
+	
+	
+	
 	<table class="table table-striped">
 	
 	<div class="col-md-4" style="padding: 20px; margin-left:1200px">
 	<form th:action="@{/logout}" method="post">
-	<input type="submit" value="Sign Out" class="btn btn-danger"/>
+	<!--  <input type="submit" value="Sign Out" class="btn btn-danger"/> -->
 	</form>
 	</div>
 	<thead>
@@ -24,8 +42,8 @@
 	<th> Description </th>
 	<th> Year </th>
 	<th> Price </th>
-	<th> Type </th>
 	<th> Owner </th>
+	<th> Type </th>
 	
 	</tr>
 	
@@ -36,14 +54,15 @@
 	          <td th:text="${clothing.description}">Description</td>
 	          <td th:text="${clothing.year}">Year</td>
 	          <td th:text="${clothing.price}">Price</td>
-	          <td th:text="${clothing.type} ? ${clothing.type.name} : ''">Type</td>
 	          <td th:text="${clothing.owner} ? ${clothing.owner.name} : ''">Owner</td>
+	          <td th:text="${clothing.type} ? ${clothing.type.name} : ''">Type</td>
 	          <td><a th:href="@{/delete/{id}(id=${clothing.id})}" class="btn btn-danger">Delete</a></td>
 	          </tr>
 	     
 	     </tbody>
 	</table>
 	<a href="/add" class="btn btn-success">Add Clothes</a>
+	<a href="/addowner" class="btn btn-success">Add Owner</a>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

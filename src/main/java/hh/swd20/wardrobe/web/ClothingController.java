@@ -32,31 +32,31 @@ public class ClothingController {
 	@Autowired
 	private OwnerRepository ownerrepository;
 
-	@RequestMapping("/clothes")
+	@RequestMapping(value="/clothing")
 	public String ClothingList(Model model) {
 	     model.addAttribute("clothes", clothingrepository.findAll());
 		
-		return "clothes";
+		return "clothing";
 	}
 	
 	@RequestMapping(value = "/add")
 	public String addClothes(Model model) {
 		model.addAttribute("clothing", new Clothing());
 		model.addAttribute("types", typerepository.findAll());
-		model.addAttribute("owner", ownerrepository.findAll());
+		model.addAttribute("owners", ownerrepository.findAll());
 		return "addclothes";
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteClothes(@PathVariable("id") Long ClothingId, Model model) {
 		clothingrepository.deleteById(ClothingId);
-		return "redirect:../clothes";
+		return "redirect:../clothing";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Clothing clothing) {
 		clothingrepository.save(clothing);
-		return "redirect:../clothes";
+		return "redirect:../clothing";
 	}
 	
 }

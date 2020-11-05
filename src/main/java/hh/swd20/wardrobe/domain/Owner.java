@@ -30,7 +30,7 @@ public class Owner {
 	}
 	
 	public Owner (String name) {
-		
+		super();
 		this.name = name;
 	}
 
@@ -61,7 +61,7 @@ public class Owner {
 
 	@Override
 	public String toString() {
-		return "Owner [id=" + ownerid + ", name=" + name + "]";
+		return "Owner [ownerid=" + ownerid + ", name=" + name + "]";
 	}
 	
 	
