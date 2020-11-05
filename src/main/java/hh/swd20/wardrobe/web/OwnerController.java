@@ -1,5 +1,6 @@
 package hh.swd20.wardrobe.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import hh.swd20.wardrobe.domain.OwnerRepository;
 
 @Controller
 public class OwnerController {
-
+    @Autowired
 	private OwnerRepository orepository;
 	
 	
@@ -31,7 +32,7 @@ public class OwnerController {
 	@RequestMapping(value = "/saveowner", method = RequestMethod.POST)
 	public String save(Owner o) {
 		orepository.save(o);
-		return "redirect:ownerlist";
+		return "redirect:/ownerlist";
 	}
 	
 	

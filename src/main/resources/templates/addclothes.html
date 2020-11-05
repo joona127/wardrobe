@@ -6,15 +6,22 @@
 <link th:href="@{/styles/add.css}" rel="stylesheet" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+#container {
+margin: auto;
+width: 97%;
+}
+</style>
 </head>
 <body>
 	
 	<div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Add Clothes!</h1>
+    <h1 class="display-4">Add some Clothes!</h1>
     <p class="lead">Did you buy new clothes? Write them down.</p>
   </div>
 </div>
+<div id="container">
 	<div>
 	<form th:object="${clothing}" th:action="@{save}" action="#" method="post">
 	<div class="form-row">
@@ -50,8 +57,9 @@
 	    
 	    
 	    
-	    <input type="submit" value="Save"></input>
+	    <button class="btn btn-primary" type="submit" value="Save">Save</button>
 	</form>
+	</div>
 	</div>
 	</body>
 	</html>

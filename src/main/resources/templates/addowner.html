@@ -5,23 +5,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+#container {
+margin: auto;
+width: 99%;
+}
+</style>
 </head>
 <body>
 	<div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Add new owner!</h1>
+    <h1 class="display-4">Add a new owner!</h1>
     <p class="lead">Hey! Here you can add yourself as an owner :)</p>
   </div>
 </div>
-	
+	<div id="container">
 	<form th:object="${owner}" th:action="@{saveowner}" action="#" method="post">
 	    <div class="form-group col-md-6">
 	    <label for="name">Name</label>
 	    <input type="text" id="name" th:field="*{name}" class="form-control"/>
 	    </div>
 	    
-	    <input type="submit" value="Save"></input>
+	    <button class="btn btn-primary" type="submit" value="Save">Save</button>
 	</form>
+	</div>
 	
 
 
