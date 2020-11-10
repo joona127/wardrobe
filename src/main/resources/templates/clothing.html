@@ -34,7 +34,7 @@
 	
 	<div class="col-md-4" style="padding: 20px; margin-left:1200px">
 	<form th:action="@{/logout}" method="post">
-	<!--  <input type="submit" value="Sign Out" class="btn btn-danger"/> -->
+	<input type="submit" value="Sign Out" class="btn btn-danger"/> 
 	</form>
 	</div>
 	<thead>
@@ -56,13 +56,13 @@
 	          <td th:text="${clothing.price}">Price</td>
 	          <td th:text="${clothing.owner} ? ${clothing.owner.name} : ''">Owner</td>
 	          <td th:text="${clothing.type} ? ${clothing.type.name} : ''">Type</td>
-	          <td><a th:href="@{/delete/{id}(id=${clothing.id})}" class="btn btn-danger">Delete</a></td>
+	          <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${clothing.id})}" class="btn btn-danger">Delete</a></td>
 	          </tr>
 	     
 	     </tbody>
 	</table>
-	<a href="/add" class="btn btn-success">Add Clothes</a>
-	<a href="/addowner" class="btn btn-success">Add Owner</a>
+	<a sec:authorize="hasAuthority('ADMIN')" href="/add" class="btn btn-success">Add Clothes</a>
+	<a sec:authorize="hasAuthority('ADMIN')" href="/addowner" class="btn btn-success">Add Owner</a>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

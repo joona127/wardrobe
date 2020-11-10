@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -31,6 +31,12 @@ public class ClothingController {
 	private TypeRepository typerepository;
 	@Autowired
 	private OwnerRepository ownerrepository;
+	
+	// Login page
+    @RequestMapping(value="/login")
+    public String login() {
+    	return "login";
+    }
 
 	@RequestMapping(value="/clothing")
 	public String ClothingList(Model model) {
@@ -46,7 +52,7 @@ public class ClothingController {
 		model.addAttribute("owners", ownerrepository.findAll());
 		return "addclothes";
 	}
-	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteClothes(@PathVariable("id") Long ClothingId, Model model) {
 		clothingrepository.deleteById(ClothingId);

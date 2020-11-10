@@ -4,12 +4,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.context.annotation.Bean;
+
+import hh.swd20.wardrobe.domain.User;
 import hh.swd20.wardrobe.domain.Clothing;
 import hh.swd20.wardrobe.domain.ClothingRepository;
 import hh.swd20.wardrobe.domain.Owner;
 import hh.swd20.wardrobe.domain.OwnerRepository;
 import hh.swd20.wardrobe.domain.Type;
 import hh.swd20.wardrobe.domain.TypeRepository;
+import hh.swd20.wardrobe.domain.UserRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +30,7 @@ public class WardrobeApplication {
 		}
 		
 		@Bean
-		public CommandLineRunner demo(ClothingRepository crepository, OwnerRepository orepository, TypeRepository trepository) {
+		public CommandLineRunner demo(ClothingRepository crepository, OwnerRepository orepository, TypeRepository trepository, UserRepository urepository) {
 			return (args) -> {
 				log.info("save a couple of clothes");
 				
@@ -58,6 +61,11 @@ public class WardrobeApplication {
 				crepository.save(c2);
 				crepository.save(c3);
 				
+				User u = new User("joona127", "$2a$10$mDBZRQQHNkVmMED17RSNp.8.s0SHcMYRiq3qR3Nwk7oJKFk7gxJHe", "ADMIN");
+				User u2 = new User("hoolappa", "$2a$10$NKMsD6FvC4BM05oLCxzjc.GUhkD51EpQYMiTX0wNyM3nIP1Ijy9bq", "USER");
+				
+				urepository.save(u);
+				urepository.save(u2);
 				
 				
 				
