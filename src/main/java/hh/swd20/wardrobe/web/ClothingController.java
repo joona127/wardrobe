@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+
 import hh.swd20.wardrobe.domain.Clothing;
 import hh.swd20.wardrobe.domain.ClothingRepository;
 import hh.swd20.wardrobe.domain.OwnerRepository;
@@ -65,5 +66,24 @@ public class ClothingController {
 		clothingrepository.save(clothing);
 		return "redirect:/clothing";
 	}
+	
+	 //Restful service to get all the clothes
+	 @RequestMapping(value="/clothes", method = RequestMethod.GET)
+	    public @ResponseBody List<Clothing> clothingListRest() {	
+	        return (List<Clothing>) clothingrepository.findAll();
+	    }   
+	 
+	// Restful service to get clothes by id
+	    @RequestMapping(value="/clothes/{id}", method = RequestMethod.GET)
+	    public @ResponseBody Optional<Clothing> findClothingRest(@PathVariable("id") Long id) {	
+	    	return clothingrepository.findById(id);
+	    }    
+	    
+	// Restful service to save new clothes
+	    @RequestMapping(value="/clothes", method = RequestMethod.POST)
+	    public @ResponseBody Clothing saveClothingRest(@RequestBody Clothing clothing) {	
+	    	return clothingrepository.save(clothing);
+	    	
+	    }
 	
 }

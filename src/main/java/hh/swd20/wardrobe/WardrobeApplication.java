@@ -63,9 +63,13 @@ public class WardrobeApplication {
 				
 				User u = new User("joona127", "$2a$10$mDBZRQQHNkVmMED17RSNp.8.s0SHcMYRiq3qR3Nwk7oJKFk7gxJHe", "ADMIN");
 				User u2 = new User("hoolappa", "$2a$10$NKMsD6FvC4BM05oLCxzjc.GUhkD51EpQYMiTX0wNyM3nIP1Ijy9bq", "USER");
+				User u3 = new User("user", "$2a$04$0GLlmPzwCFMWBoXp9j.IIOxaaDl/0KbJZXRDANZDDvmTUan7I59w6", "USER");
+				User u4 = new User("admin", "$2a$04$Uubn0.Zilbkssq8y5Urr6.TCClb/Ktlaedd2nOXSINORsQwBh7QVW", "ADMIN");
 				
 				urepository.save(u);
 				urepository.save(u2);
+				urepository.save(u3);
+				urepository.save(u4);
 				
 				
 				
